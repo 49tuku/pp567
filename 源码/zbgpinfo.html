@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$info.title}</title>
+    <meta name="keywords" content="{$site.lqzkeywords}">
+    <meta name="description" content="{$site.lqzdescription}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="/index_files/style.css">
+
+    <script src="/index_files/jquery-1.11.2.min.js"></script>
+    <script src="/index_files/common.js"></script>
+</head>
+<body>
+<header>
+    <span class="back" onclick="javascript:history.back(-1);"><img src="/index_files/back.png" alt=""></span>
+    <span class="list">{$vstr}正版挂牌</span>
+    <a class="home" href="/"><img src="/index_files/home.png" alt=""></a>
+</header>
+
+<section>
+    <!--正文内容-->
+    <div class="content">
+        <div class="ad-a" style="line-height: 30px;font-size: 15px;">
+            <style>
+                .ad-a a{
+                    display: block;
+                    font-weight: bold;
+                    border: 1px #673AB7 solid;
+                    box-shadow: 1px 2px 2px #795548;
+                    margin: 5px 2px;
+                    background: url(https://tu.99988.finance/all/hot.gif) left top no-repeat, linear-gradient(to bottom, #CDDC39 0%, #FFEB3B 90%);
+                    line-height: 30px;
+                    border-radius: 5px;
+                    padding: 0 5px;
+                    font-size: 13px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    padding-left: 18px;
+                }
+            </style>
+
+
+
+
+
+
+            <div id="guang"></div>
+
+        </div>
+
+        <h2 style="text-align:center;font-size:16px;background: #e8d25c;line-height: 40px;">{$info.qi}期:{$info.title}</h2>
+        <div style="font-family: 微软雅黑;letter-spacing: 1px;padding: 0 5px;line-height: 30px;">
+            <p>【挂牌】：{$info.guapai}</p>
+            <p>【四字】：{$info.sizi}</p>
+            <p>【火烧】：{$info.huoshao}</p>
+            <p>【门数】：{$info.menshu}</p>
+            <p>【六肖】：{$info.liuxiao}</p>
+            <p>【词目】：{$info.cimu}</p>
+            <p>【拼音】：{$info.pinyin}</p>
+            <p>【解释】：{$info.jieshi}</p>
+            <p>【出自】：{$info.chuzi}</p>
+            <p>【示例】：{$info.shili}</p>
+            <p>【语法】：{$info.yufa}</p>
+        </div>
+        <div class="ad-a" style="line-height: 30px;font-size: 15px;">
+            <div id="guang2"></div>
+
+
+
+
+        </div>
+
+    </div>
+</section>
+
+<div style="height:65px"></div>
+
+<!--底部链接-->
+{include file="index:foot"}
+
+
+<div style="display:none">
+    <!--统计代码-->
+
+</div>
+
+
+</body>
+</html>

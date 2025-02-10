@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$info.name}</title>
+    <meta name="keywords" content="澳门新彩开奖网，澳门新彩资料,澳门新彩资料,澳门新彩开奖结果">
+    <meta name="description" content="澳门新彩开奖网，澳门新彩六合论坛提供六合彩资料,六合彩特码,六合彩开奖,免费六合彩资料等大型综合六合彩新闻文字报道网站">
+    <link href="/index_files/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/gst_files/swiper.min.css">
+    <script src="/gst_files/jquery.js"></script>
+    <script src="/gst_files/swiper.min.js"></script>
+</head>
+
+<body style="">
+<!--菜单-->
+{include file="index:nav"}
+
+<div class="h10"></div>
+<!--所在位置-->
+<div class="nav-dh">
+    <a href="https://490506.com/index.htm">
+        <i>
+        </i>首页</a>
+    <i>&gt;</i>
+    <a href="javascript:window.history.go(-1)">{$pname}</a>
+    <i>&gt;</i>
+    <span>正文</span></div>
+<div class="scroll-web-txt2" align="center">
+    <div class="adx">{$page['39']['content']??''}</div>
+</div>
+<!--标题-->
+<h1 class="big-tit" style="font-size: 22px; font-weight: normal; color: rgb(51, 51, 51); font-family: 微软雅黑; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; border-top: 5px solid rgb(225, 225, 225); margin: 0px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 5px; background: rgb(238, 238, 238)">{$info.name}</h1>
+<h1 class="big-tit"></h1>
+<div class="big-tittxt">{$site.name}<font color="#ff0000">{$site.yumin1}</font></div>
+<!--正文-->
+<div class="big-con">
+{$info.content}
+</div>
+<div class="footer">
+    {$site.copyright2}
+</div>
+<!--返回上一页-->
+<a class="back" href="javascript:window.history.go(-1)"></a>
+<!--返回顶部-->
+<script src="/gst_files/scrolltop.js"></script>
+<div style="" class="gotop" id="goTopBtn"></div>
+<script type="text/javascript">goTopEx();</script>
+{include file="common:foot"}
+
+</body>
+
+</html>

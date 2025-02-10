@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$yxm.adname} {$site.lqztitle}</title>
+    <meta name="keywords" content="{$site.lqzkeywords}">
+    <meta name="description" content="{$site.lqzdescription}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="/index_files/style.css">
+
+    <script src="/index_files/jquery-1.11.2.min.js"></script>
+    <script src="/index_files/common.js"></script>
+</head>
+<body>
+<header>
+    <span class="back" onclick="javascript:history.back(-1);"><img src="/index_files/back.png" alt=""></span>
+    <span class="list">{$yxm.cname}</span>
+    <a class="home" href="/"><img src="/index_files/home.png" alt=""></a>
+</header>
+
+<section>
+    <div class="fl-list">
+        <!--正文内容-->
+        <ul style="background: #fff;">
+            {volist name="list" id="val"}
+
+            <li><a href="{:url('index/yxminfo', ['id'=>$val['id']])}">{$val.qi}期: {$val.title}</a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+
+    <div class="clear"></div>
+</section>
+
+<div style="height:65px"></div>
+
+<!--底部链接-->
+{include file="index:foot"}
+
+
+<div style="display:none">
+    <!--统计代码-->
+
+</div>
+
+
+</body>
+</html>

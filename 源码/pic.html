@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="referrer" content="never">
+    <title>香港六开奖结果资料查询最新2023,香港一肖一码精准资料,香港2023年精准资料大全,香港三肖三码精准100%,香港2023最新资料,白小姐三码三期必开一码,香港正版资料大全,香港今晚必中一肖一码,香港天天六开彩免费资料,王中王100%期期准一肖,黄大仙一肖一码必中37b,一肖一码100%中奖香港,最准一肖一码100%,白小姐三肖三码期期准灬2023今晚香港开特马,今晚香港特马开什么</title>
+    <meta name="keywords" content="香港六开奖结果资料查询最新2023,香港一肖一码精准资料,香港2023年精准资料大全,香港三肖三码精准100%,香港2023最新资料,白小姐三码三期必开一码,香港正版资料大全,香港今晚必中一肖一码,香港天天六开彩免费资料,王中王100%期期准一肖,黄大仙一肖一码必中37b,一肖一码100%中奖香港,最准一肖一码100%,白小姐三肖三码期期准灬2023今晚香港开特马,今晚香港特马开什么">
+    <meta name="description" content="香港六开奖结果资料查询最新2023,香港一肖一码精准资料,香港2023年精准资料大全,香港三肖三码精准100%,香港2023最新资料,白小姐三码三期必开一码,香港正版资料大全,香港今晚必中一肖一码,香港天天六开彩免费资料,王中王100%期期准一肖,黄大仙一肖一码必中37b,一肖一码100%中奖香港,最准一肖一码100%,白小姐三肖三码期期准灬2023今晚香港开特马,今晚香港特马开什么">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="/index_files/style.css?t={$tt}">
+    <link rel="stylesheet" href="/index_files/images.css">
+    <script src="/index_files/jquery-1.11.2.min.js"></script>
+    <script src="/index_files/common.js"></script>
+    <link rel="stylesheet" href="/index_files/swiper.min.css">
+    <script src="/index_files/swiper.min.js"></script>
+    <style>
+        .swiper-container {
+            position: fixed;
+            bottom: 59px;
+            width: 100%;
+            max-width: 800px;
+            user-select: none;
+            padding: 2px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .swiper-wrapper {
+            overflow-x: auto;
+        }
+
+        .swiper-slide {
+            width: 20%;
+        }
+
+            .swiper-slide .qid {
+                letter-spacing: 0;
+                font-size: 12px;
+                border-right: 1px solid;
+                line-height: 2rem;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="back" onclick="javascript:history.back(-1);"><img src="/index_files/back.png" alt=""></span>
+        <span class="list">彩色图库</span>
+        <a class="home" href="/"><img src="/index_files/home.png" alt=""></a>
+    </header>
+
+    <section style="padding-top:4rem">
+        <!-- 图片标题 -->
+        <h2 style="text-align:center;margin:.4rem;">{$tu.name}</h2>
+
+        <div id="content">
+            <img class="img" src="/index_files/amlrw.jpg" alt="加载中……">
+        </div>
+
+        <div style="height:40px;"></div>
+        <div class="swiper-container">
+            <!-- 图片内容 -->
+            <div class="swiper-wrapper">
+                {volist name="list" id="val"}
+                <div class="swiper-slide">
+                    <div class="qid" data-i="{$val.qi}" data-name="{$val.pic}">
+                    第{$val.qi}期
+                    </div>
+                </div>
+                {/volist}
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        $(function () {
+            var name = $('.qid').eq(0).attr('data-name');
+            var i = $('.qid').eq(0).attr('data-i');
+            i = parseInt(i);
+            var url = '/uploads/tu/' + i + '/' + name;
+            $('.img').attr("src", url);
+
+            $(".qid").click(function () {
+                var name = $(this).attr('data-name');
+                var i = $(this).attr('data-i');
+                i = parseInt(i);
+                var url = '/uploads/tu/' + i + '/' + name;
+                $('.img').remove();
+                $('#content').append("<img class='img' alt='加载中……' src='" + url + "'>");
+            });
+        });
+    </script>
+
+    <div style="height:65px"></div>
+
+    {include file="index:foot"}
+
+    
+<div style="display:none">
+<!--统计代码-->
+
+</div>
+
+</body></html>

@@ -1,0 +1,28 @@
+<!--首页【开奖】  开始-->
+<style>
+    .kjdaohang{}
+    .kjdaohang a{display: block; width: 50%; line-height: 42px; background: #fff; color: #000; float: left; text-align: center; font-size: 18px; text-decoration: none;}
+    .kjdaohang a.cur{background: #f94470; color: #fff;}
+</style>
+<div class="kjdaohang">
+    <a href="javascript:showchannel('gc')" class="gctb {if $tag=='gc'} cur{/if}"  >香港天天开</a>
+    <a href="javascript:showchannel('xg')" class="xgtb {if $tag!='gc'} cur{/if}" >港彩</a>
+</div>
+<iframe src="/kj2/gc.html?t={$tt}" width="100%" id="loadgc" style="display: none;" height="138" frameborder="0" scrolling="no" id="dibu1" name="dibu1"></iframe>
+<!--首页【开奖】  结束-->
+<script src="/index_files/jquery.min.js"></script>
+<script>
+    function showchannel(view){
+        if(view == 'gc'){
+            document.getElementById('loadgc').setAttribute('src', '/gc.html?t='+Math.random());
+            $('.gctb').addClass('cur');
+            $('.xgtb').removeClass('cur');
+        }else{
+            document.getElementById('loadgc').setAttribute('src', '/xg.html?t='+Math.random());
+            $('.xgtb').addClass('cur');
+            $('.gctb').removeClass('cur');
+        }
+    }
+    showchannel('{$tag}');
+</script>
+

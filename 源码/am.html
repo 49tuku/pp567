@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>	{$site.lqztitle}</title>
+    <meta name="keywords" content="	{$site.lqzkeywords}">
+    <meta name="description" content="{$site.lqzdescription}">
+    <link href="/index_files/style.css?t={$tt}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/index_files/swiper.min.css">
+    <script src="/index_files/jquery.js"></script>
+    <script src="/index_files/swiper.min.js"></script>
+    {$site.lqzbaidutj}
+</head>
+<style>
+    html{
+        scroll-padding-top: 240px;
+    }
+</style>
+<body style="">
+
+<!--菜单-->
+{include file="index:nav"}
+
+<div class="h10"></div>
+<!--导航-->
+<div id="nav2" class="nav2" data-fixed="">
+    <div class="toptab">
+        <div class="fonttop"  {if $lotteryType==1}style="color: #FFF;background-color:#F85F07;"{else/}style="color: #F85F07;"{/if}>
+            <a href="/?lt=1">澳门星星彩</a>
+        </div>
+    <div class="fonttop"  {if $lotteryType==2}style="color: #FFF;background-color:#F85F07;"{else/}style="color: #F85F07;"{/if}>
+            <a href="/?lt=2">澳门豆豆彩</a>
+        </div>
+    </div>
+    <ul>
+        <li><a href="#gp">挂牌</a></li>
+        <li><a href="#sbx">解四不像</a></li>
+        <li><a href="#amcz">新彩传真</a></li>
+        <li><a href="#gsb">高手资料</a></li>
+        <li><a href="#djsx">独家四肖</a></li>
+    </ul>
+    <ul>
+        <li><a href="#yxym">一肖一码</a></li>
+        <li><a href="#28ma">28码中特</a></li>
+        <li><a href="#zbct">正版图库</a></li>
+        <li><a href="#ctzl">彩图资料</a></li>
+        <li><a href="#tpcc">玄机彩图</a></li>
+    </ul>
+    <!--<ul>
+    <li><a value="#cypt">成语平特</a></li>
+    <li><a value="#ctxszl">心水专区</a></li></ul>-->
+</div>
+<script>
+    var obj = document.getElementById("nav2");
+var ot = obj.offsetTop;
+document.onscroll = function() {
+    var st = document.body.scrollTop || document.documentElement.scrollTop;
+    obj.setAttribute("data-fixed", st >= ot ? "fixed": "")
+}
+</script>
+<!--通知-->
+
+<div class="h10"></div>
+<div class="box pad">
+    <style>.KJ-TabBox { height: 236px; overflow: hidden; color:#333; background: #fff; font-family: 'PingFang SC', 'microsoft yahei', arial, 'helvetica neue', 'hiragino sans gb', sans-serif;} .KJ-TabBox ul,.KJ-TabBox li{margin:0;list-style:none;padding:0;border:0;font-size: 18px;padding:1px 20px} .KJ-TabBox ul { display: flex; height: 36px; padding: 8px 0 0 8px; box-sizing: border-box; border-bottom: solid 2px #FFF;} .KJ-TabBox li{ height: 26px; line-height: 26px; margin-right: 8px; text-align: center; border-radius: 4px; background: #eee; cursor: pointer;} .KJ-TabBox li.cur{ color: #fff; background: #FF9900;} .KJ-TabBox li:nth-child(1).cur { background: #1FB61D;} .KJ-TabBox li:nth-child(2).cur { background: #E71607;} .KJ-TabBox li:nth-child(3).cur { background: #2389E9;} .KJ-TabBox li:nth-child(4).cur { background: #B907C1;} .KJ-TabBox div{display:none;} .KJ-TabBox div.cur{display:block!important;} .KJ-TabBox .KJ-IFRAME{}
+    @media screen and (max-width: 850px) {
+        .KJ-TabBox ul,.KJ-TabBox li { font-size: 16px;}
+    }
+    @media screen and (max-width: 450px) {
+        .KJ-TabBox{ height: 180px!important;}
+    }
+    </style>
+    <div class="KJ-TabBox">
+        <ul>
+            <li data-opt="{'color':'#ffffff','url':'/kj1/wy{$lotteryType}.html','height':220}" class="cur" style="color: rgb(255, 255, 255); border-color: rgb(255, 255, 255);">{$vstr}</li>
+            <li data-opt="{'color':'#ffffff','url':'/kj1/am.html','height':220}" class="">澳彩</li>
+            <li data-opt="{'color':'#ffffff','url':'/kj1/xg.html','height':220}" class="">港彩</li>
+        </ul>
+        <div class="cur" style="border-color: rgb(255, 255, 255);">
+            <iframe class="KJ-IFRAME" src="/kj1/wy{$lotteryType}.html?t={$tt}" width="100%" height="220" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+
+        var KJTB ={
+            $(str){return document.querySelector(str);},
+            init(str){
+                var that = this;
+                var dom = this.$(str);
+                dom.addEventListener("click",function(e){
+                    var el = e.target;
+                    if(el.tagName != "LI"||el.className=="cur")return;
+                    var ind = that.index(el);
+                    var nodes = dom.querySelectorAll("li");
+                    for(var item of nodes){
+                        item.removeAttribute("style");
+                        item.removeAttribute("class");
+                    }
+                    el.className="cur";
+                    nodes = dom.querySelectorAll("div");
+                    for(var item of nodes){
+                        if(item.getAttribute("class")=="cur") that.leave(item);
+                        item.removeAttribute("style");
+                        item.removeAttribute("class");
+                    }
+                    var node = that.getEl(dom,ind,"DIV");
+                    node.className="cur";
+                    that.cur(dom,el,node);
+                });
+                var node = that.getEl(dom.querySelector("UL"),0,"LI");
+                node.click();
+                [[document,"DOMContentLoaded"],[window,"resize"]].forEach((item,index,self)=>{
+                    var removeEl=(id)=>{
+                        try{
+                            var ifr = document.getElementById(id);
+                            ifr.parentNode.removeChild(ifr);
+                        }catch(e){}
+                    };
+                    var insert = (id,str)=>{
+                        var dom = document.createElement("style");
+                        dom.id = id;
+                        dom.innerHTML = str;
+                        document.head.appendChild(dom);
+                    }
+                    item[0].addEventListener(item[1],function(){
+                        removeEl("kj-iframe-css");
+                        var w = window.screen.availWidth;
+                        if(w<=650 && w>500){
+                            insert("kj-iframe-css",".KJ-IFRAME{height:170px;}");
+                        }else if(w<=500 && w>450){
+                            insert("kj-iframe-css",".KJ-IFRAME{height:150px;}");
+                        }else if(w<=450 && w>350){
+                            insert("kj-iframe-css",".KJ-IFRAME{height:140px;}");
+                        }else if(w<=350){
+                            insert("kj-iframe-css",".KJ-IFRAME{height:130px;}");
+                        }
+                    },false);
+                });
+            },
+            cur(dom,el,node){
+                var that = this;
+                var data = el.getAttribute('data-opt');
+                data = JSON.parse(data.replace(/'/g,"\""));
+                el.style.color = data["color"];
+                el.style.borderColor = data["color"];
+                node.style.borderColor = data["color"];
+
+                var tid = node.getAttribute("_tid");
+                if(tid){
+                    clearTimeout(parseInt(tid));
+                    node.removeAttribute("_tid");
+                    return;
+                }
+                node.innerHTML = `
+			<iframe class="KJ-IFRAME" src="${data["url"]}" width="100%" height="${data["height"]}" frameborder="0" scrolling="no"></iframe>
+		`;
+            },
+            leave(item){
+                var that = this;
+                function remove(el){
+                    this.id = setTimeout(()=>{
+                        if(!el.getAttribute("_tid")) return;
+                        el.removeAttribute("_tid");
+                        el.innerHTML="";
+                    },1000*10);
+                    el.setAttribute("_tid",this.id);
+                }
+                new remove(item);
+            },
+            index(el,tag){
+                var node = el.parentNode.childNodes;
+                var index = -1;
+                for(var item of node){
+                    (tag) ? (tag==item.tagName) && index++ : index++;
+                    if (item===el) return index;
+                }
+                return index;
+            },
+            getEl(el,index,tag){
+                var i = -1;
+                for(var item of el.childNodes){
+                    (tag) ? (tag==item.tagName) && i++ : i++;
+                    if(index==i) return item;
+                }
+            }
+        };
+        KJTB.init(".KJ-TabBox");
+    </script>
+
+</div>
+
+<!--广告-->
+<div class="adx">{$page['24']['content']??''}</div>
+<!--最新公告-->
+<style>.xnhc{margin-top: 3px;padding: 5px;border-radius: 5px;background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.2);background-color: #ff0; font-family: '微软雅黑';font-size: 14pt;color: #000;font-weight: 500;border: solid 1px #C0C0C0;line-height: normal;max-width: 800px;margin: 0 auto;text-align: center;}</style>
+<div class="adx">{$page['37']['content']??''}</div>
+
+<style>
+    .adx{width: 100%;}
+    .adx img{width: 100%}
+    .swiper-nav .swiper-slide{
+        width:140px!important;
+    }
+</style>
+<div class="adx">{$page['36']['content']??''}</div>
+
+<!-- 如果需要分页器 -->
+<div class="swiper-pagination"></div>
+<script>var mySwiper = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    // 垂直切换选项
+    loop: true,
+    // 循环模式选项
+    autoplay: {
+        delay: 3000,
+    },
+    // 如果需要分页器
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    // 如果需要前进后退按钮
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    // 如果需要滚动条
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+})
+</script>
+<!--一肖一码-->
+<div id="yxym" class="yxym-tit">AAAAA级大公开;<font color="#0000FF">准确率绝对100%</font></div>
+<div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_1">
+    <div class="swiper-wrapper swiper-nav">
+        {volist name="data.am.yxym" id="val" key="s1"}
+        <div class="swiper-slide {if $s1==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+        {/volist}
+    </div>
+</div>
+<div class="swiper-container swiper-container-horizontal" id="swiper-container2_1">
+    <div class="swiper-wrapper yxym" >
+        {volist name="data.am.yxym" id="val"}
+        <div class="swiper-slide" >
+            <!--一肖一码每期开始-->
+            {$val.content}
+            <!--一肖一码每期结束-->
+        </div>
+        {/volist}
+    </div>
+    <div class="h10"></div>
+    <!--各大型资料站-->
+</div>
+    <!--解澳门新彩跑马图-->
+    <div id="pgt" class="tit"><h3>解澳门新彩跑马图</h3></div>
+    <div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_2">
+        <div class="swiper-wrapper swiper-nav">
+            {volist name="data.am.amtu1" id="val" key="s2"}
+            <div class="swiper-slide {if $s2==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+            {/volist}
+        </div>
+    </div>
+    <div class="swiper-container swiper-container-horizontal" id="swiper-container2_2">
+        <div class="swiper-wrapper">
+            {volist name="data.am.amtu1" id="val"}
+            <div class="swiper-slide swiper-slide-active">
+                <!--解澳门新彩跑马图每期开始-->
+                <div class="tab-pic"><img src="{$val.image}"></div>
+                <div class="tab-txt">
+                    <strong>{$val.qi}期{$val.name}</strong>
+                    {$val.content}
+                </div>
+                <!--解澳门新彩跑马图每期结束-->
+            </div>
+            {/volist}
+
+        </div>
+    </div>
+        <div class="h10"></div>
+        <!--高手榜-->
+        <div id="gsb" class="gsb-tit"><img src="{$site.gsbtitle}"></div>
+        <div class="gsb-box">
+            <ul>
+                {volist name="data.am.gst" id="val"}
+                <li>
+                    <a href="{:url('index/gst', ['id'=>$val.id])}">
+                        <div class="gsbli1"><em>高手贴</em>{$val.qi}期:<font>【{$val.name}】</font>稳定料</div>
+                        <div class="gsbli2">{$val.zz}</div>
+                    </a>
+                </li>
+                {/volist}
+
+
+            </ul>
+        </div>
+        <div class="h10"></div>
+        <!--正版澳门新彩图库-->
+        <div id="zbct" class="tit">
+            <h3>【正版澳门新彩图库】</h3>
+            <!--<a href="/k_imageslist.aspx"><span class="more">更多&raquo;</span></a>--></div>
+        <div class="tuku">
+            <ul>
+                {volist name="data.tulink" id="val"}
+                <li>
+                    <a href="{$val.pictureUrl}" target="_blank">
+                        <div>
+                            <img src="{$val.pictureUrl}">
+                            <p>{$val.pictureName}</p>
+                        </div>
+                    </a>
+                </li>
+                {/volist}
+
+            </ul>
+        </div>
+        <!--公式-->
+        <table border="1" id="dsgs" width="100%" bgcolor="#ffffff">
+            <tbody>
+            <tr>
+                <td style="border:8px double #f13131" bgcolor="#f13131height=30">
+                    <p align="center">
+                        <b>
+                            <font face="楷体" style="font-size: 20pt">
+                                <font color="#FFFF00">澳门新彩开奖网</font>
+                                <font color="#FFFFFF">『大神公式』</font></font>
+                        </b>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!--.六合秘笈开始-->
+        <table class="in" width="100%" border="0" cellspacing="1" cellpadding="0" style="width: 100%">
+            <colgroup>
+                <col width="33%">
+                <col width="33%">
+                <col width="33%">
+            </colgroup>
+            <tbody>
+            {volist name="data.am.gst2" id="val" key="g2"}
+                {if $g2 % 3 == 1}<tr>{/if}
+                <td><a href="{:url('index/wcsl', ['id'=>$val.id])}">{$val.qi}期:公式 {$val.name}</a></td>
+                {if $g2 % 3 == 0}</tr>{/if}
+            {/volist}
+
+            </tbody>
+        </table>
+        <!--.六合秘籍结束-->
+        <!--解澳门新彩挂牌-->
+        <div id="gp" class="tit"><h3>解新彩挂牌</h3></div>
+        <div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_3">
+            <div class="swiper-wrapper swiper-nav">
+                {volist name="data.am.amtu2" id="val" key="s3"}
+                <div class="swiper-slide {if $s3==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+                {/volist}
+            </div>
+        </div>
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container2_3">
+            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+
+                {volist name="data.am.amtu2" id="val"}
+                <div class="swiper-slide " >
+                    <!--解澳门新彩跑马图每期开始-->
+                    <div class="tab-pic"><img src="{$val.image}"></div>
+                    <div class="tab-txt">
+                        <strong>{$val.qi}期{$val.name}</strong>
+                        {$val.content}
+                    </div>
+                    <!--解澳门新彩跑马图每期结束-->
+                </div>
+                {/volist}
+
+            </div>
+        </div>
+        <div class="h10"></div>
+        <!--澳门新彩图库心水图片资料专区-->
+        <div id="ctzl" class="tit">
+             <h3>澳门新彩图库心水图片资料专区</h3>
+        </div>
+        <div class="list">
+            <div class="xinlv"></div>
+            <ul>
+                {volist name="data.tulink" id="val"}
+                <li class="div10"><a class="div11" href="{$val.pictureUrl}">{$val.pictureName}</a></li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="h10"></div>
+        <div id="qxc" class="tit"><h3>澳门新彩趣味看图</h3></div>
+        <div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_7">
+            <div class="swiper-wrapper swiper-nav" style="transform: translate3d(0px, 0px, 0px);">
+                {volist name="data.am.amtu3" id="val" key="s4"}
+                <div class="swiper-slide {if $s4==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+                {/volist}
+            </div>
+        </div>
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container2_7">
+            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                {volist name="data.am.amtu3" id="val"}
+                <div class="swiper-slide " >
+                    <!--解澳门新彩跑马图每期开始-->
+                    <div class="tab-pic"><img src="{$val.image}"></div>
+                    <div class="tab-txt">
+                        <strong>{$val.qi}期{$val.name}</strong>
+                    </div>
+                    <!--解澳门新彩跑马图每期结束-->
+                </div>
+                {/volist}
+
+            </div>
+        </div>
+        <div class="h10"></div>
+        <!--解四不像图-->
+        <div id="sbx" class="tit">
+            <h3>解四不像图</h3>
+            <!--<a target="_blank" href="/k_images.aspx?id=827">更多></a>--></div>
+        <div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_4">
+            <div class="swiper-wrapper swiper-nav" style="transform: translate3d(0px, 0px, 0px);">
+                {volist name="data.am.amtu4" id="val" key="s5"}
+                <div class="swiper-slide {if $s5==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+                {/volist}
+            </div>
+        </div>
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container2_4">
+            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                {volist name="data.am.amtu4" id="val"}
+                <div class="swiper-slide " >
+                    <!--解澳门新彩跑马图每期开始-->
+                    <div class="tab-pic"><img src="{$val.image}"></div>
+                    <div class="tab-txt">
+                        <strong>{$val.qi}期{$val.name}</strong>
+                        {$val.content}
+                    </div>
+                    <!--解澳门新彩跑马图每期结束-->
+                </div>
+                {/volist}
+            </div>
+        </div>
+        <div class="h10"></div>
+
+        <!--解澳门新彩内幕传真图-->
+        <div id="amcz" class="tit">
+            <h3>解澳门新彩内幕传真图</h3>
+            <!--<a target="_blank" href="/k_images.aspx?id=2">更多></a>--></div>
+        <div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_5">
+            <div class="swiper-wrapper swiper-nav" style="transform: translate3d(0px, 0px, 0px);">
+                {volist name="data.am.amtu5" id="val" key="s6"}
+                <div class="swiper-slide {if $s6==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+                {/volist}
+            </div>
+        </div>
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container2_5">
+            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                {volist name="data.am.amtu5" id="val"}
+                <div class="swiper-slide " >
+                    <!--解澳门新彩跑马图每期开始-->
+                    <div class="tab-pic"><img src="{$val.image}"></div>
+                    <div class="tab-txt">
+                        <strong>{$val.qi}期{$val.name}</strong>
+                        {$val.content}
+                    </div>
+                    <!--解澳门新彩跑马图每期结束-->
+                </div>
+                {/volist}
+
+            </div>
+        </div>
+        <div class="h10"></div>
+        <!--28码中特-->
+        <div id="28ma" class="tit">
+            <h3>28码中特</h3>
+            <!--<a target="_blank" href="#">更多></a>--></div>
+        <div class="esbm">
+            <table width="100%" border="1">
+                <!--28码中特每期开始-->
+                <tbody>
+                {volist name="data.am.28mzt" id="val"}
+                <tr><th>{$val.qi}期特开：（{$val.kai}）准100%</th></tr>
+                <tr><td class="td1">{$val.content}</td></tr>
+                {/volist}
+
+                <!--28码中特每期结束-->
+                </tbody>
+            </table>
+        </div>
+        <div class="h10"></div>
+        <!--解四不像-->
+        <div id="tpcc" class="tit">
+            <h3>解澳门新彩管家婆</h3>
+            <!--<a target="_blank" href="/k_images.aspx?id=1086">更多></a>--></div>
+        <div class="swiper-container swiper-container-horizontal swiper-container-free-mode" id="swiper-container1_6">
+            <div class="swiper-wrapper swiper-nav" >
+                {volist name="data.am.amtu6" id="val" key="s7"}
+                <div class="swiper-slide {if $s7==1}active-nav{/if}" style="width: 143.2px;">{$val.qi}期</div>
+                {/volist}
+            </div>
+        </div>
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container2_6">
+            <div class="swiper-wrapper" >
+                {volist name="data.am.amtu6" id="val"}
+                <div class="swiper-slide " >
+                    <!--解澳门新彩跑马图每期开始-->
+                    <div class="tab-pic"><img src="{$val.image}"></div>
+                    <div class="tab-txt">
+                        <strong>{$val.qi}期{$val.name}</strong>
+                        {$val.content}
+                    </div>
+                    <!--解澳门新彩跑马图每期结束-->
+                </div>
+                {/volist}
+
+            </div>
+            <div class="h10"></div>
+            <!--杀肖杀尾118专杀榜-->
+            <div class="tit">
+                <h3>杀肖杀尾专杀榜</h3>
+                <!--<a target="_blank" href="#">更多></a>--></div>
+            <div class="sxsw">
+                <table width="100%" border="1">
+                    <tbody>
+                    <tr>
+                        <th>期数</th>
+                        <th>杀肖</th>
+                        <th>杀尾</th>
+                        <th>杀半波</th>
+                        <th>杀一段</th>
+                        <th>结果</th>
+                    </tr>
+                    {volist name="data.am.zsb" id="val"}
+                    <tr>
+                        <td bgcolor="#FF0000"><font color="#FFFFFF">{$val.qi}期</font></td>
+                        <td>{$val.xiao}</td>
+                        <td>{$val.wei}</td>
+                        <td>{$val.banbo}</td>
+                        <td>{$val.yiduan}</td>
+                        <td>{$val.kai}</td>
+                    </tr>
+                    {/volist}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="h10"></div>
+            <!--118独家长跟久赢-->
+            <div id="djsx" class="tit">
+                <h3>独家长跟久赢</h3></div>
+            <div class="cgjy">
+                {volist name="data.am.jx24m" id="val"}
+                {$val.content}
+                {/volist}
+            </div>
+            <div class="h10"></div>
+            <div class="adx">{$page['38']['content']??''}</div>
+            <div class="h10"></div>
+
+            <!--对照表开始-->
+            <iframe height="1575" border="0" frameBorder="0" width="100%" name="I9" marginwidth="1" marginheight="1" scrolling="no" target="_blank" src="/index_files/sx2025.html?t={$tt}"></iframe>
+            <!--对照表结束-->
+            <!--底部-->
+            <div class="footer">
+                <p>{$site.copyright2}</p>
+            </div>
+            {include file="common:foot"}
+            <a href="https://www.286hc.com/?cate=3">六合彩图库源码</a>
+            <!--返回顶部-->
+            <script src="/index_files/scrolltop.js"></script>
+            <div style="" class="gotop" id="goTopBtn"></div>
+            <script type="text/javascript">goTopEx();</script>
+            <script src="/index_files/tab.js"></script>
+        </div>
+    </div>
+</div>
+<style>
+    @media screen and (max-width: 400px){
+        table.in td a{font-size: 14px;}
+
+        .yxym table th{font-size: 14px!important;}
+        .yxym table td{font-size: 14px!important;}
+        .yxym table td *{font-size: 14px!important;}
+        .yxym table th *{font-size: 14px!important;}
+    }
+</style>
+</body>
+
+</html>
